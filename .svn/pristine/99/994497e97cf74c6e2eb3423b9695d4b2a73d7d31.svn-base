@@ -1,0 +1,52 @@
+/*
+ * lib_OEM_MODBUS.h
+ * This library is for use with a Modbus ethernet connectin
+ * The standard modbus library must be installed with
+ * apt-get install libmodbus-dev
+ *
+ *  Created on: Jun 20, 2017
+ *      Author: sushshring
+ */
+
+#ifndef LIB_OEM_MODBUS_H_
+#define LIB_OEM_MODBUS_H_
+
+#include <modbus/modbus-tcp.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <stddef.h>
+#include <errno.h>
+
+typedef struct _modbus modbus_t;
+
+/**
+ *
+ */
+int Modbus_connect_TCP(modbus_t *ctx, char *IP, int port);
+
+/**
+ * Returns socket and modbus_t context in *ctx
+ */
+int Modbus_listen_TCP(modbus_t *ctx, char *IP, int port);
+
+/**
+ *
+ */
+int Modbus_send_data(modbus_t *ctx, void *buf, unsigned short size);
+
+/**
+ *
+ */
+int Modbus_receive_data(modbus_t *ctx, void *buf, unsigned short size);
+
+/**
+ *
+ */
+void Modbus_disconnect_TCP(modbus_t *ctx);
+
+
+
+
+
+
+#endif /* LIB_OEM_MODBUS_H_ */
